@@ -6,8 +6,13 @@
   </head>
   <body>
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <p>Status: <span id="my-status">Not logged in.  Name, Email, and Image will appear below once you have.</span></p>
+    <p>Name: <span id="my-name"></span></p>
+    <p>Status: <span id="my-email"></span></p>
+    <p>Image: <span id="my-image"></span></p>
     <script>
       function onSignIn(googleUser) {
+      	console.log(`onSignIn triggered:`, googleUser); 
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -16,6 +21,20 @@
         console.log('Family Name: ' + profile.getFamilyName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
+
+		
+		// Show the status as good!
+		document.querySelector(`my-name`).innerText = "Logged in! =)";
+		
+		// Write the name and email into the webpage.
+		document.querySelector(`my-name`).innerText = profile.getName();
+		document.querySelector(`my-email`).innerText = profile.getEmail();
+		
+		// Fetch and display the profile image.
+		let i = new Image();
+		i.src = profile.getImageUrl();
+		document.querySelector(`my-name`).appendChild(i);
+		
 
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
