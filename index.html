@@ -24,16 +24,16 @@
 
 		
 		// Show the status as good!
-		document.querySelector(`my-name`).innerText = "Logged in! =)";
+		document.querySelector(`#my-status`).innerText = "Logged in! =)";
 		
 		// Write the name and email into the webpage.
-		document.querySelector(`my-name`).innerText = profile.getName();
-		document.querySelector(`my-email`).innerText = profile.getEmail();
+		document.querySelector(`#my-name`).innerText = profile.getName();
+		document.querySelector(`#my-email`).innerText = profile.getEmail();
 		
 		// Fetch and display the profile image.
 		let i = new Image();
 		i.src = profile.getImageUrl();
-		document.querySelector(`my-name`).appendChild(i);
+		document.querySelector(`#my-image`).appendChild(i);
 		
 
         // The ID token you need to pass to your backend:
